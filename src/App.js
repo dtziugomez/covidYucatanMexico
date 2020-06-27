@@ -10,7 +10,7 @@ export default class App extends Component {
 
   fetchMunicipios = () => {
     fetch(
-      "https://api.apify.com/v2/key-value-stores/8uKXvLNo1rQA7Tt9B/records/LATEST?disableRedirect=1"
+      "https://api.apify.com/v2/key-value-stores/5MeTdsSsl3qzrY0ue/records/LATEST?disableRedirect=1"
     )
       .then(response => response.json())
       .then(municipios => {
@@ -37,7 +37,7 @@ export default class App extends Component {
                     Confirmados
                   </th>
                   <th scope="col" className="bg-success">
-                    Recuperados
+                    Sospechosos
                   </th>
                   <th scope="col" className="bg-dark">
                     Defunciones
@@ -49,6 +49,8 @@ export default class App extends Component {
                   <tr key={municipio.clave}>
                     <td>{municipio.nombre}</td>
                     <td>{municipio.confirmados}</td>
+                    <td>{municipio.sospechosos}</td>
+                    <td>{municipio.defunciones}</td>
                   </tr>
                 ))}
               </tbody>
