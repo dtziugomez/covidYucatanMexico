@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./App.css";
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -25,13 +25,42 @@ export default class App extends Component {
     return (
       <>
         {this.state.municipios.length > 0 && (
-          <ul>
-            {this.state.municipios.map(municipio => (
-              <li key={municipio.clave}>
-                Municipio:{municipio.nombre}-Confirmados:{municipio.confirmados}
-              </li>
-            ))}
-          </ul>
+          <div className="container">
+            <h1 className="text-center">Covid-19 Yucatan México </h1>
+            <table className="table table-primary table-responsive">
+              <thead>
+                <tr>
+                  <th scope="col" className="bg-secondary">
+                    Municipio
+                  </th>
+                  <th scope="col" className="bg-danger">
+                    Confirmados
+                  </th>
+                  <th scope="col" className="bg-success">
+                    Recuperados
+                  </th>
+                  <th scope="col" className="bg-dark">
+                    Defunciones
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.municipios.map(municipio => (
+                  <tr key={municipio.clave}>
+                    <td>{municipio.nombre}</td>
+                    <td>{municipio.confirmados}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          // <ul>
+          //   {this.state.municipios.map(municipio => (
+          //     <li key={municipio.clave}>
+          //       Municipio:{municipio.nombre}-Confirmados:{municipio.confirmados}
+          //     </li>
+          //   ))}
+          // </ul>
         )}
       </>
     );
