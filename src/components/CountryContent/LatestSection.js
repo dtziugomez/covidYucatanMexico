@@ -1,8 +1,7 @@
 import React from "react";
 // components
 import { Counter } from "./../Counter";
-// import TotalCasesPieChart from "./../TotalCasesPieChart";
-// import { extractLatestCasesChartData } from "./../../utils";
+
 import styles from "./LatestSection.module.scss";
 
 const LatestSection = ({ country }) => {

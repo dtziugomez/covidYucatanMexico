@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // components
 import FilterField from "./FilterField";
-//import SortButton from "./SortButton";
+
 // styles, utils, ...
 import { capitalize } from "./../../utils";
 import styles from "./SearchBox.module.scss";
@@ -58,25 +58,6 @@ const SearchBox = ({
           onEnterPress={onEnterPress}
         />
       </div>
-
-      {/* <ul className={styles.sortBox}>
-        <li>
-          <SortButton
-            type="alpha"
-            order={sortValue.by === "name" ? sortValue.order : "desc"}
-            isActive={sortValue.by === "name"}
-            onClick={() => onSortChange("name")}
-          />
-        </li>
-        <li>
-          <SortButton
-            type="num"
-            order={sortValue.by === "cases" ? sortValue.order : "desc"}
-            isActive={sortValue.by === "cases"}
-            onClick={() => onSortChange("cases")}
-          />
-        </li>
-      </ul> */}
     </div>
   );
 };

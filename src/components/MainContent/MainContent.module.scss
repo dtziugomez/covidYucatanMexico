@@ -7,7 +7,17 @@
   padding: $padding;
   overflow: hidden;
   overflow-y: auto;
-
+  background: $dark-bg;
+  color: $white;
+  .title {
+    position: relative;
+    margin: 20px 0 40px 0;
+    padding-bottom: 10px;
+    font-size: 3.5rem;
+    font-weight: $normal;
+    color: red;
+    text-align: center;
+  }
   .githubButton {
     z-index: $top-zindex;
     position: fixed;
@@ -20,17 +30,16 @@
     opacity: 0.4;
     transition: opacity 0.2s;
     background-color: $dark-bg;
-  
+
     &:hover {
       opacity: 0.9;
     }
-
   }
-  
+
   @media only screen and (max-width: 768px) {
     padding: 3vw;
   }
-  
+
   @media only screen and (max-width: 480px) {
     padding: 4vw;
 

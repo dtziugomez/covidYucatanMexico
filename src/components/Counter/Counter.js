@@ -1,11 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
-
 import CounterItem from "./CounterItem";
 import "./Counter.scss";
 
 const Counter = ({ type, latest }) => {
-  console.log(latest);
   let confirmados = Number(latest.confirmados);
   let sospechosos = Number(latest.sospechosos);
   let defunciones = Number(latest.defunciones);

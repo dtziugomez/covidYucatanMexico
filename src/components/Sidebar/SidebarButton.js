@@ -14,7 +14,7 @@ export default ({ open, onClick }) => {
       <span className={styles.text}>
         {open ? "Close" : "open"}
         <br />
-        countries list
+        list
       </span>
     </div>
   );

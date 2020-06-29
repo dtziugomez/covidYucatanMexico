@@ -14,12 +14,8 @@ export default ({
   countries,
   onSelectedCountryChanged
 }) => {
-  //const defaultSort = { by: "cases", order: "desc" };
-  // const [sortedCountries, setSortedCountries] = useState(
-  //   sortCountries(countries, defaultSort)
-  // );
   const [filtredCountries, setFiltredCountries] = useState(countries);
-  //const [sortValue, setSortValue] = useState(defaultSort);
+
   const [selectedCountry, setSelectedCountry] = useState({});
 
   const handleFilterValueChange = value => {
@@ -33,20 +29,6 @@ export default ({
       setFiltredCountries(municipio);
     }
   };
-
-  // const handleSortChange = value => {
-  //   const { by, order } = sortValue;
-  //   const newSort =
-  //     value === ""
-  //       ? defaultSort
-  //       : {
-  //           by: value,
-  //           order: by === value ? (order === "desc" ? "asc" : "desc") : "desc"
-  //         };
-  //   setSortValue(newSort);
-  //   setFiltredCountries(countries);
-  //   //setSortedCountries(sortCountries(sortedCountries, newSort)); // to avoid sorting in filterChange
-  // };
 
   const handleCountryItemClick = country => {
     const newSelectedCountry =

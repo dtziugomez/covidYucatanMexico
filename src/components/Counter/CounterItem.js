@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import CountUp from "react-countup";
 // icons
 import { IoIosCloseCircleOutline as DeathsIcon } from "react-icons/io";
@@ -9,7 +8,6 @@ import { IoIosRemoveCircleOutline as ConfirmedIcon } from "react-icons/io";
 const CounterItem = ({ type, value }) => {
   let Icon = null;
   let label = "";
-  console.log(`tipo:${type}`);
 
   if (type === "confirmed") {
     Icon = ConfirmedIcon;
@@ -35,9 +33,6 @@ const CounterItem = ({ type, value }) => {
   );
 };
 
-// CounterItem.propTypes = {
-//   type: PropTypes.oneOf(["confirmed", "recovered", "deaths"]).isRequired,
-//   value: PropTypes.string.isRequired
-// };
+
 
 export default CounterItem;

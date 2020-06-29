@@ -19,7 +19,7 @@ const FilterField = ({ value, onChange, onClear, onEnterPress, ...rest }) => {
         onChange={onChange}
         onKeyUp={handleKeyPress}
         className={styles.input}
-        placeholder="Selecciona un municipio ..."
+        placeholder="Select a municipality ..."
         {...rest}
       />
 
