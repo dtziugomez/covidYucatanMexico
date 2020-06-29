@@ -1,70 +1,49 @@
-import React, { Component } from "react";
-import "./App.css";
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      municipios: []
-    };
-  }
+import React, { useState } from "react";
+import { useAsync } from "react-async";
+//components
+import Sidebar from "./components/Sidebar";
+import MainContent from "./components/MainContent";
+// api, utils, styles, ...
+import { getMunicipios } from "./api";
 
-  fetchMunicipios = () => {
-    fetch(
-      "https://api.apify.com/v2/key-value-stores/5MeTdsSsl3qzrY0ue/records/LATEST?disableRedirect=1"
-    )
-      .then(response => response.json())
-      .then(municipios => {
-        this.setState({ municipios: municipios.State });
-      });
+import styles from "./App.module.scss";
+
+export default function App() {
+  const { data } = useAsync({ promiseFn: getMunicipios });
+  const [selectedCountry, setSelectedCountry] = useState({});
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 1080);
+
+  const handleSelectedCountry = country => {
+    setSelectedCountry(country);
+
+    // in small devices close sidebar after country selection
+    if (window.innerWidth < 480) {
+      setSidebarOpen(false);
+    }
   };
 
-  componentDidMount() {
-    this.fetchMunicipios();
-  }
-  render() {
+  if (data) {
+    const { State = [] } = data;
+
     return (
-      <>
-        {this.state.municipios.length > 0 && (
-          <div className="container">
-            <h1 className="text-center">Covid-19 Yucatan México </h1>
-            <table className="table table-primary table-responsive">
-              <thead>
-                <tr>
-                  <th scope="col" className="bg-secondary">
-                    Municipio
-                  </th>
-                  <th scope="col" className="bg-danger">
-                    Confirmados
-                  </th>
-                  <th scope="col" className="bg-success">
-                    Sospechosos
-                  </th>
-                  <th scope="col" className="bg-dark">
-                    Defunciones
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.municipios.map(municipio => (
-                  <tr key={municipio.clave}>
-                    <td>{municipio.nombre}</td>
-                    <td>{municipio.confirmados}</td>
-                    <td>{municipio.sospechosos}</td>
-                    <td>{municipio.defunciones}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          // <ul>
-          //   {this.state.municipios.map(municipio => (
-          //     <li key={municipio.clave}>
-          //       Municipio:{municipio.nombre}-Confirmados:{municipio.confirmados}
-          //     </li>
-          //   ))}
-          // </ul>
-        )}
-      </>
+      <div
+        className={`${styles.app} ${
+          sidebarOpen ? styles.sideOpen : styles.sideClose
+        }`}
+      >
+        <div className={styles.side}>
+          <Sidebar
+            open={sidebarOpen}
+            onToggleButtonClick={() => setSidebarOpen(!sidebarOpen)}
+            countries={State}
+            onSelectedCountryChanged={handleSelectedCountry}
+          />
+        </div>
+        <div className={styles.main}>
+          <MainContent selectedCountry={selectedCountry} />
+        </div>
+      </div>
     );
   }
+  return null;
 }

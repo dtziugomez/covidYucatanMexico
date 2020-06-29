@@ -1,0 +1,28 @@
+// Common
+$top-zindex: 999;
+$sidebar-width: 280px;
+
+// Font
+$font: "Titillium Web", sans-serif;
+$light: 300;
+$normal: 400;
+$medium: 600;
+$bold: 700;
+
+// Colors
+$black: #000;
+$white: #fff;
+$dark-bg: #1b1c22;
+$border-color: #24262d;
+
+$confirmed: #5e9cea;
+$recovered: #35ba9b;
+$deaths: #d94452;
+
+$primary: #4a6cb4;
+$text-primary: $white;
+$text-secondary: #929295;
+
+$blue: $confirmed;
+$green: $recovered;
+$red: $deaths;
