@@ -20,7 +20,7 @@ const SearchBox = ({
   // Listen to selectedCountry changes (select / unselect)
   useEffect(() => {
     if (selectedCountryName === undefined) {
-      handleClearFilterValue();
+      //handleClearFilterValue();
     } else if (typeof selectedCountryName === "string") {
       setFilterValue(selectedCountryName);
     }
