@@ -42,7 +42,7 @@ export default function App() {
         <div className={styles.main}>
           <MainContent selectedCountry={selectedCountry} />
         </div>
-      </div>
+      </div> 
     );
   }
   return null;
